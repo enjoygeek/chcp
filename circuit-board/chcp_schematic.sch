@@ -13261,11 +13261,11 @@ USART&lt;p&gt;
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="+3V4" library="supply1" deviceset="+3V3" device=""/>
-<part name="FTDI" library="con-lstb" deviceset="MA06-1" device=""/>
+<part name="J1" library="con-lstb" deviceset="MA06-1" device="" value="FTDI"/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="+3V5" library="supply1" deviceset="+3V3" device=""/>
 <part name="Q1" library="special" deviceset="XTAL/S" device="" value="16 MHz"/>
-<part name="LCD1" library="con-lstb" deviceset="MA08-1" device=""/>
+<part name="J2" library="con-lstb" deviceset="MA08-1" device="" value="LCD1"/>
 <part name="+3V6" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND6" library="supply1" deviceset="GND" device=""/>
 <part name="+3V7" library="supply1" deviceset="+3V3" device=""/>
@@ -13276,12 +13276,12 @@ USART&lt;p&gt;
 <part name="C4" library="rcl" deviceset="C-EU" device="025-024X044" value="100nF"/>
 <part name="C5" library="rcl" deviceset="CPOL-EU" device="E2.5-5" value="470uF"/>
 <part name="R1" library="rcl" deviceset="R-EU_" device="0204/7" value="10K"/>
-<part name="S1" library="switch-omron" deviceset="10-XX" device=""/>
+<part name="S1" library="switch-omron" deviceset="10-XX" device="" value="RESET"/>
 <part name="C7" library="rcl" deviceset="C-EU" device="025-024X044" value="100nF"/>
 <part name="+3V8" library="supply1" deviceset="+3V3" device=""/>
 <part name="POE1" library="pem1300" deviceset="PEM1300" device=""/>
 <part name="ETH1" library="in28j60" deviceset="IN28J60" device=""/>
-<part name="LCD2" library="con-lstb" deviceset="MA08-1" device=""/>
+<part name="J3" library="con-lstb" deviceset="MA08-1" device="" value="LCD2"/>
 </parts>
 <sheets>
 <sheet>
@@ -13297,14 +13297,14 @@ USART&lt;p&gt;
 <instance part="GND2" gate="1" x="106.68" y="17.78"/>
 <instance part="GND4" gate="1" x="-109.22" y="-45.72"/>
 <instance part="+3V4" gate="G$1" x="-119.38" y="-15.24"/>
-<instance part="FTDI" gate="1" x="-99.06" y="50.8"/>
+<instance part="J1" gate="1" x="-99.06" y="50.8"/>
 <instance part="GND5" gate="1" x="-83.82" y="38.1"/>
 <instance part="+3V5" gate="G$1" x="-73.66" y="55.88"/>
 <instance part="Q1" gate="G$1" x="-35.56" y="38.1" smashed="yes" rot="R90">
 <attribute name="NAME" x="-26.67" y="35.56" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="-30.48" y="33.02" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="LCD1" gate="1" x="43.18" y="-30.48" rot="MR180"/>
+<instance part="J2" gate="1" x="43.18" y="-30.48" rot="MR180"/>
 <instance part="+3V6" gate="G$1" x="76.2" y="-27.94"/>
 <instance part="GND6" gate="1" x="76.2" y="-43.18"/>
 <instance part="+3V7" gate="G$1" x="5.08" y="-7.62"/>
@@ -13322,7 +13322,7 @@ USART&lt;p&gt;
 </instance>
 <instance part="POE1" gate="G$1" x="-83.82" y="-25.4"/>
 <instance part="ETH1" gate="G$1" x="-35.56" y="-27.94"/>
-<instance part="LCD2" gate="1" x="22.86" y="-30.48" rot="MR180"/>
+<instance part="J3" gate="1" x="22.86" y="-30.48" rot="MR180"/>
 </instances>
 <busses>
 </busses>
@@ -13335,7 +13335,7 @@ USART&lt;p&gt;
 <wire x1="106.68" y1="50.8" x2="106.68" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="FTDI" gate="1" pin="3"/>
+<pinref part="J1" gate="1" pin="3"/>
 <pinref part="+3V5" gate="G$1" pin="+3V3"/>
 <wire x1="-91.44" y1="48.26" x2="-73.66" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="-73.66" y1="48.26" x2="-73.66" y2="53.34" width="0.1524" layer="91"/>
@@ -13356,9 +13356,9 @@ USART&lt;p&gt;
 <segment>
 <pinref part="+3V6" gate="G$1" pin="+3V3"/>
 <wire x1="76.2" y1="-30.48" x2="76.2" y2="-35.56" width="0.1524" layer="91"/>
-<pinref part="LCD1" gate="1" pin="6"/>
+<pinref part="J2" gate="1" pin="6"/>
 <wire x1="50.8" y1="-35.56" x2="76.2" y2="-35.56" width="0.1524" layer="91"/>
-<pinref part="LCD2" gate="1" pin="6"/>
+<pinref part="J3" gate="1" pin="6"/>
 <wire x1="30.48" y1="-35.56" x2="50.8" y2="-35.56" width="0.1524" layer="91"/>
 <junction x="50.8" y="-35.56"/>
 </segment>
@@ -13383,12 +13383,13 @@ USART&lt;p&gt;
 <pinref part="+3V8" gate="G$1" pin="+3V3"/>
 <wire x1="-45.72" y1="53.34" x2="-45.72" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="C7" gate="G$1" pin="1"/>
-<pinref part="IC1" gate="G$1" pin="AVCC"/>
-<wire x1="-25.4" y1="50.8" x2="-27.94" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="-27.94" y1="50.8" x2="-33.02" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="-45.72" y1="50.8" x2="-33.02" y2="50.8" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="G$1" pin="AVCC"/>
+<wire x1="-33.02" y1="50.8" x2="-27.94" y2="50.8" width="0.1524" layer="91"/>
 <junction x="-33.02" y="50.8"/>
-<wire x1="-22.86" y1="53.34" x2="-27.94" y2="53.34" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="G$1" pin="AREF"/>
+<wire x1="-27.94" y1="50.8" x2="-25.4" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="-25.4" y1="53.34" x2="-27.94" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="-27.94" y1="53.34" x2="-27.94" y2="50.8" width="0.1524" layer="91"/>
 <junction x="-27.94" y="50.8"/>
 </segment>
@@ -13465,16 +13466,16 @@ USART&lt;p&gt;
 <wire x1="-119.38" y1="-38.1" x2="-119.38" y2="-35.56" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="FTDI" gate="1" pin="1"/>
+<pinref part="J1" gate="1" pin="1"/>
 <wire x1="-91.44" y1="43.18" x2="-83.82" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="GND5" gate="1" pin="GND"/>
 <wire x1="-83.82" y1="43.18" x2="-83.82" y2="40.64" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="LCD1" gate="1" pin="8"/>
+<pinref part="J2" gate="1" pin="8"/>
 <wire x1="50.8" y1="-40.64" x2="76.2" y2="-40.64" width="0.1524" layer="91"/>
 <pinref part="GND6" gate="1" pin="GND"/>
-<pinref part="LCD2" gate="1" pin="8"/>
+<pinref part="J3" gate="1" pin="8"/>
 <wire x1="30.48" y1="-40.64" x2="50.8" y2="-40.64" width="0.1524" layer="91"/>
 <junction x="50.8" y="-40.64"/>
 </segment>
@@ -13520,10 +13521,10 @@ USART&lt;p&gt;
 <label x="38.1" y="5.08" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="LCD1" gate="1" pin="4"/>
+<pinref part="J2" gate="1" pin="4"/>
 <wire x1="50.8" y1="-30.48" x2="66.04" y2="-30.48" width="0.1524" layer="91"/>
 <label x="58.42" y="-30.48" size="1.778" layer="95"/>
-<pinref part="LCD2" gate="1" pin="4"/>
+<pinref part="J3" gate="1" pin="4"/>
 <wire x1="30.48" y1="-30.48" x2="50.8" y2="-30.48" width="0.1524" layer="91"/>
 <junction x="50.8" y="-30.48"/>
 </segment>
@@ -13567,7 +13568,7 @@ USART&lt;p&gt;
 </net>
 <net name="RXD" class="0">
 <segment>
-<pinref part="FTDI" gate="1" pin="4"/>
+<pinref part="J1" gate="1" pin="4"/>
 <wire x1="-91.44" y1="50.8" x2="-81.28" y2="50.8" width="0.1524" layer="91"/>
 <label x="-86.36" y="50.8" size="1.778" layer="95"/>
 </segment>
@@ -13579,7 +13580,7 @@ USART&lt;p&gt;
 </net>
 <net name="TXD" class="0">
 <segment>
-<pinref part="FTDI" gate="1" pin="5"/>
+<pinref part="J1" gate="1" pin="5"/>
 <wire x1="-91.44" y1="53.34" x2="-81.28" y2="53.34" width="0.1524" layer="91"/>
 <label x="-86.36" y="53.34" size="1.778" layer="95"/>
 </segment>
@@ -13614,12 +13615,27 @@ USART&lt;p&gt;
 </net>
 <net name="LCD-SS" class="0">
 <segment>
-<pinref part="LCD1" gate="1" pin="2"/>
+<pinref part="J2" gate="1" pin="2"/>
 <wire x1="50.8" y1="-25.4" x2="66.04" y2="-25.4" width="0.1524" layer="91"/>
 <label x="58.42" y="-25.4" size="1.778" layer="95"/>
-<pinref part="LCD2" gate="1" pin="2"/>
+<pinref part="J3" gate="1" pin="2"/>
 <wire x1="50.8" y1="-25.4" x2="30.48" y2="-25.4" width="0.1524" layer="91"/>
 <junction x="50.8" y="-25.4"/>
+</segment>
+<segment>
+<pinref part="IC1" gate="G$1" pin="(PCI1/OC1A/OC1S)PB1"/>
+<wire x1="30.48" y1="10.16" x2="45.72" y2="10.16" width="0.1524" layer="91"/>
+<label x="38.1" y="10.16" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="LCD-DC" class="0">
+<segment>
+<pinref part="J2" gate="1" pin="3"/>
+<wire x1="50.8" y1="-27.94" x2="66.04" y2="-27.94" width="0.1524" layer="91"/>
+<label x="58.42" y="-27.94" size="1.778" layer="95"/>
+<pinref part="J3" gate="1" pin="3"/>
+<wire x1="30.48" y1="-27.94" x2="50.8" y2="-27.94" width="0.1524" layer="91"/>
+<junction x="50.8" y="-27.94"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="G$1" pin="(PCI2/SS/OC1B)PB2"/>
@@ -13627,22 +13643,12 @@ USART&lt;p&gt;
 <label x="38.1" y="7.62" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="LCD-DC" class="0">
-<segment>
-<pinref part="LCD1" gate="1" pin="3"/>
-<wire x1="50.8" y1="-27.94" x2="66.04" y2="-27.94" width="0.1524" layer="91"/>
-<label x="58.42" y="-27.94" size="1.778" layer="95"/>
-<pinref part="LCD2" gate="1" pin="3"/>
-<wire x1="30.48" y1="-27.94" x2="50.8" y2="-27.94" width="0.1524" layer="91"/>
-<junction x="50.8" y="-27.94"/>
-</segment>
-</net>
 <net name="SCLK" class="0">
 <segment>
-<pinref part="LCD1" gate="1" pin="5"/>
+<pinref part="J2" gate="1" pin="5"/>
 <wire x1="50.8" y1="-33.02" x2="66.04" y2="-33.02" width="0.1524" layer="91"/>
 <label x="58.42" y="-33.02" size="1.778" layer="95"/>
-<pinref part="LCD2" gate="1" pin="5"/>
+<pinref part="J3" gate="1" pin="5"/>
 <wire x1="30.48" y1="-33.02" x2="50.8" y2="-33.02" width="0.1524" layer="91"/>
 <junction x="50.8" y="-33.02"/>
 </segment>
@@ -13659,29 +13665,29 @@ USART&lt;p&gt;
 </net>
 <net name="LCD-LIGHT" class="0">
 <segment>
-<pinref part="LCD1" gate="1" pin="7"/>
+<pinref part="J2" gate="1" pin="7"/>
 <wire x1="50.8" y1="-38.1" x2="66.04" y2="-38.1" width="0.1524" layer="91"/>
 <label x="58.42" y="-38.1" size="1.778" layer="95"/>
-<pinref part="LCD2" gate="1" pin="7"/>
+<pinref part="J3" gate="1" pin="7"/>
 <wire x1="30.48" y1="-38.1" x2="50.8" y2="-38.1" width="0.1524" layer="91"/>
 <junction x="50.8" y="-38.1"/>
 </segment>
 </net>
 <net name="EN-SS" class="0">
 <segment>
-<pinref part="IC1" gate="G$1" pin="(PCI0/ICP/CLKO)PB0"/>
-<wire x1="30.48" y1="12.7" x2="45.72" y2="12.7" width="0.1524" layer="91"/>
-<label x="38.1" y="12.7" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="ETH1" gate="G$1" pin="!CS!"/>
 <wire x1="-17.78" y1="-33.02" x2="-5.08" y2="-33.02" width="0.1524" layer="91"/>
 <label x="-12.7" y="-33.02" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="IC1" gate="G$1" pin="(PCI23/AIN1)PD7"/>
+<wire x1="30.48" y1="17.78" x2="45.72" y2="17.78" width="0.1524" layer="91"/>
+<label x="38.1" y="17.78" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="N$5" class="0">
 <segment>
-<pinref part="FTDI" gate="1" pin="6"/>
+<pinref part="J1" gate="1" pin="6"/>
 <wire x1="-91.44" y1="55.88" x2="-88.9" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="-88.9" y1="55.88" x2="-88.9" y2="60.96" width="0.1524" layer="91"/>
 <pinref part="C3" gate="G$1" pin="1"/>
@@ -13698,25 +13704,19 @@ USART&lt;p&gt;
 <junction x="-35.56" y="43.18"/>
 </segment>
 </net>
-<net name="N$8" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="(PCI19/INT1/OC2B)PD3"/>
-<wire x1="30.48" y1="27.94" x2="33.02" y2="27.94" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="LCD-RESET" class="0">
 <segment>
-<pinref part="LCD1" gate="1" pin="1"/>
+<pinref part="J2" gate="1" pin="1"/>
 <wire x1="50.8" y1="-22.86" x2="66.04" y2="-22.86" width="0.1524" layer="91"/>
 <label x="58.42" y="-22.86" size="1.778" layer="95"/>
-<pinref part="LCD2" gate="1" pin="1"/>
+<pinref part="J3" gate="1" pin="1"/>
 <wire x1="30.48" y1="-22.86" x2="50.8" y2="-22.86" width="0.1524" layer="91"/>
 <junction x="50.8" y="-22.86"/>
 </segment>
 <segment>
-<pinref part="IC1" gate="G$1" pin="(PCI1/OC1A/OC1S)PB1"/>
-<wire x1="30.48" y1="10.16" x2="45.72" y2="10.16" width="0.1524" layer="91"/>
-<label x="38.1" y="10.16" size="1.778" layer="95"/>
+<pinref part="IC1" gate="G$1" pin="(PCI0/ICP/CLKO)PB0"/>
+<wire x1="30.48" y1="12.7" x2="45.72" y2="12.7" width="0.1524" layer="91"/>
+<label x="38.1" y="12.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$1" class="0">
