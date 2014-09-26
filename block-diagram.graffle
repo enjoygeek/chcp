@@ -814,7 +814,7 @@ LED}</string>
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs24 \cf0 Ag9000-S\
+\f0\fs24 \cf0 PEM1300\
 PoE Module\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
@@ -970,7 +970,7 @@ PCD8544}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2014-03-15 15:47:55 +0000</string>
+	<string>2014-09-26 08:51:17 +0000</string>
 	<key>Modifier</key>
 	<string>Nicholas Humfrey</string>
 	<key>NotesVisible</key>
@@ -1055,8 +1055,6 @@ PCD8544}</string>
 				<string>Canvas 1</string>
 			</dict>
 		</array>
-		<key>Frame</key>
-		<string>{{85, 103}, {878, 666}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
