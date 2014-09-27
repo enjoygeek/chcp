@@ -82,7 +82,7 @@ void setup(void)
 {
   // Setup LED and buttons
   pinMode(RED_LED_PIN, OUTPUT);
-  pinMode(BUTTON_PIN, INPUT);
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
 
   // Clear the LCD
   lcd.begin();
@@ -112,7 +112,7 @@ void loop(void)
 
   // Check if button has gone from LOW to HIGH and stayed there
   int reading = digitalRead(BUTTON_PIN);
-  if (reading == HIGH && buttonPrevious == LOW && millis() - buttonTime > DEBOUNCE_TIME) {
+  if (reading == LOW && buttonPrevious == HIGH && millis() - buttonTime > DEBOUNCE_TIME) {
     const char* message = NULL;
     buttonTime = millis();
 
