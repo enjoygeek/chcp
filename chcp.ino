@@ -43,12 +43,12 @@ uint8_t bitmap_off[3*60] PROGMEM = {
 };
 
 
-#define LCD_RST_PIN  5
+#define BUTTON_PIN   5
 #define RED_LED_PIN  6
-#define BUTTON_PIN   7
-#define ETH_SS_PIN   8
-#define LCD_DC_PIN   9
-#define LCD_SS_PIN   10
+#define ETH_SS_PIN   7
+#define LCD_RST_PIN  8
+#define LCD_SS_PIN   9
+#define LCD_DC_PIN   10
 
 #define DEBOUNCE_TIME 300
 
