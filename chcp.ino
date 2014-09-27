@@ -80,8 +80,6 @@ static byte mymac[6];
 
 void setup(void)
 {
-  Serial.begin(9600);
-
   // Setup LED and buttons
   pinMode(RED_LED_PIN, OUTPUT);
   pinMode(BUTTON_PIN, INPUT);
