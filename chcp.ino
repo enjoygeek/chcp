@@ -92,7 +92,17 @@ void setup(void)
   // Start I2C communication and read MAC address
   Wire.begin();
   readMacAddress(0x0, mymac);
-  delay(500);
+
+  lcd.println("Central");
+  lcd.println("Heating");
+  lcd.println("Control");
+  lcd.println("Panel");
+  lcd.println("MAC Address:");
+  for (byte i = 0; i < 6; ++i) {
+    lcd.print(mymac[i], HEX);
+  }
+  lcd.println();
+  delay(2000);
 
   // Setup IP networking
   startNetworking();
