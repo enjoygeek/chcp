@@ -6,6 +6,13 @@ PoE powered Central Heating Control Panel
 ![Block Diagram](https://raw.github.com/njh/chcp/master/block-diagram.png "Block Diagram")
 
 
+Photo of circuit board:
+
+![Assembled circuit board](https://farm4.staticflickr.com/3881/15182909310_61bd4f8c98_z_d.jpg "Assembled circuit board")
+
+More photos in this gallery on Flickr:
+https://www.flickr.com/photos/njh/sets/72157648035750106/
+
 
 ATMEGA328 Pin Mapping
 ----------------------
