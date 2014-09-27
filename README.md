@@ -29,8 +29,8 @@ ATMEGA328 Pin Mapping
 | 8   | GND  |         |             |
 | 9   | CLK  |         |             |
 | 10  | CLK  |         |             |
-| 11  | D5   | D5      | Red LED     |
-| 12  | D6   | D6      | Push Button |
+| 11  | D5   | D5      | Push Button |
+| 12  | D6   | D6      | Red LED     |
 | 13  | D7   | D7      | Ethernet SS |
 | 14  | B0   | D8      | LCD RESET   |
 | 15  | B1   | D9      | LCD SS      |
