@@ -189,21 +189,32 @@ void dhcpNtpOptionCallback(uint8_t option, const byte* ptr, uint8_t len)
 void startNetworking()
 {
   lcd.clear();
-  if (ether.begin(sizeof Ethernet::buffer, mymac, 8) < 1) {
+  lcd.gotoRc(0,0);
+
+  int ver = ether.begin(sizeof Ethernet::buffer, mymac, ETH_SS_PIN);
+  if (ver < 1) {
     lcd.println("Ethernet Fail");
     while (true);
   }
 
+  lcd.print("ENC28J60 v");
+  lcd.println(ver, DEC);
+  delay(2000);
+
   // Register callback for DHCP option 183
   ether.dhcpAddOptionCallback(183, dhcpNtpOptionCallback);
 
-  lcd.println("Setup DHCP");
+  lcd.println("Starting DHCP");
   if (ether.dhcpSetup()) {
     lcd.println("OK");
   } else {
     lcd.println("FAILED");
     while (true);
   }
+
+  delay(2000);
+  lcd.clear();
+  lcd.gotoRc(0,0);
 
   // Display our IP address
   lcd.println("My Address:");
