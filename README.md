@@ -6,6 +6,13 @@ PoE powered Central Heating Control Panel
 ![Block Diagram](https://raw.github.com/njh/chcp/master/block-diagram.png "Block Diagram")
 
 
+Photo of circuit board:
+
+![Assembled circuit board](https://farm4.staticflickr.com/3881/15182909310_61bd4f8c98_z_d.jpg "Assembled circuit board")
+
+More photos in this gallery on Flickr:
+https://www.flickr.com/photos/njh/sets/72157648035750106/
+
 
 ATMEGA328 Pin Mapping
 ----------------------
@@ -22,8 +29,8 @@ ATMEGA328 Pin Mapping
 | 8   | GND  |         |             |
 | 9   | CLK  |         |             |
 | 10  | CLK  |         |             |
-| 11  | D5   | D5      |             |
-| 12  | D6   | D6      |             |
+| 11  | D5   | D5      | Push Button |
+| 12  | D6   | D6      | Red LED     |
 | 13  | D7   | D7      | Ethernet SS |
 | 14  | B0   | D8      | LCD RESET   |
 | 15  | B1   | D9      | LCD SS      |
