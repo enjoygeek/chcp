@@ -1,9 +1,9 @@
 /* 
- * Central Heating Control Panel
- * Copyright 2014 Nicholas Humfrey
+ * IPv6 enabled Central Heating Control Panel
+ * Copyright 2014-2017 Nicholas Humfrey
  *
  * Libary Dependencies:
- *   https://github.com/jcw/ethercard
+ *   https://github.com/njh/ethersia
  *   https://github.com/snigelen/pcd8544
  *
  */
