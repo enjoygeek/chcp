@@ -9,7 +9,7 @@
  */
 
 #include <Wire.h>
-#include <EtherCard.h>
+#include <EtherSia.h>
 #include <pcd8544.h>
 
 const uint8_t bitmap_on[3*60] PROGMEM = {
@@ -74,7 +74,8 @@ pcd8544 lcd(
 );
 
 // Ethernet and MAC address buffers
-byte Ethernet::buffer[700];
+EtherSia_ENC28J60 ether(ETH_SS_PIN);
+UDPSocket udp(ether, 5000);
 static byte mymac[6];
 
 
@@ -89,20 +90,10 @@ void setup(void)
   lcd.clear();
   lcd.gotoRc(0,0);
 
-  // Start I2C communication and read MAC address
-  Wire.begin();
-  readMacAddress(0x0, mymac);
-
   lcd.println("Central");
   lcd.println("Heating");
   lcd.println("Control");
   lcd.println("Panel");
-  lcd.println("MAC Address:");
-  for (byte i = 0; i < 6; ++i) {
-    lcd.print(mymac[i], HEX);
-  }
-  lcd.println();
-  delay(2000);
 
   // Setup IP networking
   startNetworking();
@@ -115,10 +106,20 @@ void setup(void)
 
 void loop(void)
 {
-  word rc;
+  // process packets
+  ether.receivePacket();
 
-  // Process any incoming ethernet packets
-  rc = ether.packetLoop(ether.packetReceive());
+  if (udp.havePacket()) {
+      if (udp.payloadEquals("onn")) {
+         state = STATE_ON;
+      } else if (udp.payloadEquals("off")) {
+         state = STATE_OFF;
+      } else {
+        state = STATE_ERROR;
+      }
+
+      updateDisplay();
+  }
 
   // Check if button has gone from LOW to HIGH and stayed there
   int reading = digitalRead(BUTTON_PIN);
@@ -129,10 +130,10 @@ void loop(void)
     if (state == STATE_ON) {
       message = "off";
     } else {
-      message = "on";
+      message = "onn";
     }
 
-    ether.sendUdp(message, strlen(message), 1886, serverIp, 1886);
+    udp.send(message);
   }
 
   buttonPrevious = reading;
@@ -165,77 +166,33 @@ void updateDisplay()
 }
 
 
-// Checks the UDP packet and updates state global variable
-void udpUpdateState(word port, byte ip[4], const char *data, word len) {
-  if (len == 2 && data[0] == 'o' && data[1] == 'n') {
-    state = STATE_ON;
-  } else if (len == 3 && data[0] == 'o' && data[1] == 'f' && data[2] == 'f') {
-    state = STATE_OFF;
-  } else {
-    state = STATE_ERROR;
-  }
-
-  updateDisplay();
-}
-
-
-void dhcpNtpOptionCallback(uint8_t option, const byte* ptr, uint8_t len)
-{
-    EtherCard::copyIp(serverIp, (uint8_t*)ptr);
-}
-
-
 // Setup Ethetnet networking
 void startNetworking()
 {
   lcd.clear();
   lcd.gotoRc(0,0);
 
-  int ver = ether.begin(sizeof Ethernet::buffer, mymac, ETH_SS_PIN);
-  if (ver < 1) {
-    lcd.println("Ethernet Fail");
-    while (true);
+  // Start I2C communication and read MAC address
+  Wire.begin();
+  readMacAddress(0x0, mymac);
+  lcd.println("MAC Address:");
+  for (byte i = 0; i < 6; ++i) {
+    lcd.print(mymac[i], HEX);
   }
-
-  lcd.print("ENC28J60 v");
-  lcd.println(ver, DEC);
+  lcd.println();
   delay(2000);
 
-  // Register callback for DHCP option 183
-  ether.dhcpAddOptionCallback(183, dhcpNtpOptionCallback);
-
-  lcd.println("Starting DHCP");
-  if (ether.dhcpSetup()) {
+  lcd.println("Setup ENC28J60");
+  if (ether.begin(mymac)) {
     lcd.println("OK");
   } else {
-    lcd.println("FAILED");
+    lcd.println("Fail");
     while (true);
   }
 
-  delay(2000);
-  lcd.clear();
-  lcd.gotoRc(0,0);
-
-  // Display our IP address
-  lcd.println("My Address:");
-  for (byte i = 0; i < 4; ++i) {
-    lcd.print( ether.myip[i], DEC );
-    if (i < 3)
-      lcd.print('.');
-  }
-  lcd.println();
-
-  // Display the server address
-  lcd.println("Server Addr:");
-  for (byte i = 0; i < 4; ++i) {
-    lcd.print( serverIp[i], DEC );
-    if (i < 3)
-      lcd.print('.');
-  }
-  lcd.println();
-
-  // Register udpUpdateState() to port 1886
-  ether.udpServerListenOnPort(&udpUpdateState, 1886);
+  // Address of the local NodeRED server
+  udp.setRemoteAddress("fe80::ba27:ebff:fe13:bc65", 5000);
+  udp.send("?");
 }
 
 
